@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <title>Eu te amo!</title>
+  <style>
+    body {
+      margin: 0;
+      background: #000;
+      overflow: hidden;
+      height: 100vh;
+      font-family: Arial, sans-serif;
+    }
+
+    .amor {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      color: #ff0000;
+      animation: cair linear;
+      white-space: nowrap;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(0);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(110vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <script>
+    function criarAmor() {
+      // Criar várias mensagens por vez
+      for (let i = 0; i < 5; i++) {
+        const texto = document.createElement('div');
+        texto.classList.add('amor');
+        texto.textContent = 'Eu te amo minha princesa 😍🫶';
+
+        texto.style.left = Math.random() * window.innerWidth + 'px';
+        texto.style.animationDuration = (2 + Math.random() * 3) + 's';
+        texto.style.fontSize = (20 + Math.random() * 10) + 'px';
+
+        document.body.appendChild(texto);
+
+        setTimeout(() => {
+          texto.remove();
+        }, 6000);
+      }
+    }
+
+    // Chuva mais intensa: várias vezes por segundo
+    setInterval(criarAmor, 100);
+  </script>
+
+</body>
+</html>
