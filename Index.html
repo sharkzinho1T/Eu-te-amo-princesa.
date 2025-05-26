@@ -1,0 +1,60 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <title>Eu te amo caindo</title>
+  <style>
+    body {
+      margin: 0;
+      overflow: hidden;
+      background-color: black;
+    }
+
+    .frase {
+      position: absolute;
+      top: -50px;
+      font-size: 24px;
+      color: red;
+      font-family: Arial, sans-serif;
+      animation: cair linear infinite;
+      white-space: nowrap;
+      pointer-events: none;
+    }
+
+    @keyframes cair {
+      0% {
+        transform: translateY(-50px);
+        opacity: 1;
+      }
+      100% {
+        transform: translateY(100vh);
+        opacity: 0;
+      }
+    }
+  </style>
+</head>
+<body>
+
+<script>
+  function criarFrase() {
+    const quantidade = 5; // Cria 5 "eu te amo" por vez
+    for (let i = 0; i < quantidade; i++) {
+      const frase = document.createElement("div");
+      frase.className = "frase";
+      frase.textContent = "Eu te amo minha princesa 😍🫶";
+      frase.style.left = Math.random() * window.innerWidth + "px";
+      frase.style.animationDuration = (Math.random() * 3 + 2) + "s";
+      frase.style.fontSize = (Math.random() * 20 + 20) + "px";
+      document.body.appendChild(frase);
+
+      setTimeout(() => {
+        frase.remove();
+      }, 5000);
+    }
+  }
+
+  setInterval(criarFrase, 150); // Roda a cada 150ms
+</script>
+
+</body>
+</html>
